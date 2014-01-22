@@ -4,4 +4,8 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-BrainStorm2014::Application.config.secret_token = '144f9cfdab7e5c867d1996ebf2e661b68ac30dafdce3c7d27a312a45614d1123e74998ae2f9d1b69a69952b4e140f3a761c2fd7145e93c3dbacd25a49e1881f3'
+BrainStorm2014::Application.config.secret_token = if Rails.env.development? or Rails.env.test?
+  ('x' * 30) # meets minimum requirement of 30 chars long
+else
+  ENV['SECRET_TOKEN']
+end
