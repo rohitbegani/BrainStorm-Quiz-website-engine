@@ -4,25 +4,25 @@
   <%= devise_error_messages! %>
 
   <div><%=f.label :first_name %><br />
-  	<%= f.text_field :first_name %></div>
+  	<%= f.text_field :first_name, :placeholder => "Enter your first name" %></div>
 
   <div><%=f.label :last_name %><br />
-  	<%= f.text_field :last_name %></div>
+  	<%= f.text_field :last_name, :placeholder => "Enter your last name" %></div>
 
   <div><%=f.label :profile_name %><br />
-  	<%= f.text_field :profile_name %></div>
+  	<%= f.text_field :profile_name, :placeholder => "Choose a profile name"%></div>
 
   <div><%=f.label :college_name %><br />
-  	<%= f.text_field :college_name %></div>
+  	<%= f.text_field :college_name, :placeholder => "Enter the name of your college"%></div>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <%= f.email_field :email, :placeholder => "Enter your email"  %></div>
 
   <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password, :placeholder => "Enter password" %></div>
 
   <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation, :placeholder => "Re-enter the same password" %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

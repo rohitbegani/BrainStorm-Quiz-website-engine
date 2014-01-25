@@ -1,16 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>BrainStorm2014</title>
+  <meta name="description" content="BrainStorm 2014 - Online treasure hunt event!">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!--Remove if you want to allow people to zoom on mobile website-->
+  <%= stylesheet_link_tag "bootstrap" %>
+  <%= stylesheet_link_tag "bootstrap-theme" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">   <!-- For navbar-->
+			<ul>
+					<li>Rules</li>
+					<li>Forum</li>
+				<% if current_user.try(:admin?) %>
+					<li>Make Game</li>
+				<% end %>
+					<li>LeaderBoard</li>
+				<% if user_signed_in? %>
+					<li>Play Game</li>
+					<li><%= link_to "Logout", destroy_user_session_path, :method => :delete  %></li>
+				<% else %> 
+					<li><%= link_to "Sign In", user_session_path %></li>
+					<li><%= link_to "SignUp", new_user_registration_path %></li>
+				<% end %>
+			</ul>
+		</div><!--Closing for navbar navbar-header-->
+	</nav>
 	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
+    <div class ="container"><!--for container-->
+	
 <%= yield %>
+	<% if current_user and current_user.admin? %>
+	<p>yes</p>
+	<% else %>
+	<p>no</p>
+	<% end %>
+	<% if current_user.try(:admin?) %>
+	<p>true</p>
+	<% else %>
+	<p>false</p>
+	<% end %>
+
+	</div> <!-- Closing container-->
 
 </body>
 </html>

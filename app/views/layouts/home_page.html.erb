@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="description" content="BrainStorm 2014 - Online treasure hunt event!">
+    	<%= stylesheet_link_tag "home_page" %>
+    	<%= stylesheet_link_tag "bootstrap" %>
+    	<%= stylesheet_link_tag "bootstrap-theme" %>
+    	<%= javascript_include_tag "home_page" %>
+    	<%= javascript_include_tag "prefixfree.min" %>    	
+		<link href='http://fonts.googleapis.com/css?family=Monoton' rel='stylesheet' type='text/css'> 	
+	</head>
+	<body>
+		<div>
+		  <p id="error">B<span>r</span>ainStorm</p>
+		  <p id="code">2<span>0</span><span>1</span><span>4</span></p>
+		</div>
+		<%= link_to "Register", new_user_registration_path %>		  
+	</body>
+</html>
