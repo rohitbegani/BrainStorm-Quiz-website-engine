@@ -14,40 +14,54 @@
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">   <!-- For navbar-->
-			<ul>
-					<li>Rules</li>
-					<li>Forum</li>
+			  <!-- Brand and toggle get grouped for better mobile display -->
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			    <span class="icon-bar"></span>
+		    </button>
+	        <div class="navbar-brand"><%= link_to "BrainStorm", root_path, id: 'logo' %></div>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to "Rules", root_path %></li>
+					<li><%= link_to "Forum", root_path %></li>
 				<% if current_user.try(:admin?) %>
-					<li>Make Game</li>
+					<li><%= link_tp "Make Game", root_path %></li>
 				<% end %>
-					<li>LeaderBoard</li>
+					<li><%= link_to "LeaderBoard", root_path %></li>
 				<% if user_signed_in? %>
-					<li>Play Game</li>
+					<li><%= link_to "Play Game", root_path %></li>
 					<li><%= link_to "Logout", destroy_user_session_path, :method => :delete  %></li>
 				<% else %> 
 					<li><%= link_to "Sign In", user_session_path %></li>
 					<li><%= link_to "SignUp", new_user_registration_path %></li>
 				<% end %>
 			</ul>
-		</div><!--Closing for navbar navbar-header-->
+		</div>
 	</nav>
-	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+   
     <div class ="container"><!--for container-->
+    	 <% if flash[:notice] %>
+    <div class = "alert alert-info">
+    	<a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+    	<%= flash[:notice] %>
+    </div>
+    <% end %>
+    <% if flash[:alert] %>
+    <div class = "alert alert-danger">
+    	<a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+    	<%= flash[:alert] %>
+    </div>
+    <% end %>
 	
 <%= yield %>
-	<% if current_user and current_user.admin? %>
-	<p>yes</p>
-	<% else %>
-	<p>no</p>
-	<% end %>
-	<% if current_user.try(:admin?) %>
-	<p>true</p>
-	<% else %>
-	<p>false</p>
-	<% end %>
 
 	</div> <!-- Closing container-->
+	<footer>
+
+	</footer>
 
 </body>
 </html>
