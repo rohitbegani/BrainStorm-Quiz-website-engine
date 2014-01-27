@@ -28,7 +28,7 @@
 					<li><%= link_to "Rules", root_path %></li>
 					<li><%= link_to "Forum", root_path %></li>
 				<% if current_user.try(:admin?) %>
-					<li><%= link_tp "Make Game", root_path %></li>
+					<li><%= link_to "Make Game", root_path %></li>
 				<% end %>
 					<li><%= link_to "LeaderBoard", root_path %></li>
 				<% if user_signed_in? %>
