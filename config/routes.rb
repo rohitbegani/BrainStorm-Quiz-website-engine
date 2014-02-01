@@ -1,13 +1,13 @@
 BrainStorm2014::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "signup"}
 
-
-  resources :levels
-
-
+  
+  resources :levels, :only => [:create, :show, :update, :destroy]
+  
 
   root :to => "home_page#index"
   match '/home', :to => 'main_pages#home', :as => 'home'
+  match '/admin', :to => 'main_pages#admin', :as => 'admin'
 
 
 
