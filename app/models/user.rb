@@ -18,5 +18,9 @@ class User < ActiveRecord::Base
     #user.image = auth.info.image # assuming the user model has an image
     user.save!
   end
+
+  def admin?
+    
+  end
 end
 end
