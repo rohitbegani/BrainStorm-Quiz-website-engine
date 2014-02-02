@@ -1,10 +1,10 @@
-<% form_for :level, :html => { :multipart => true} do |f| %>
+<%= form_for @level do |f| %>
 
 	<div><%= f.label :question %>
 	<%= f.text_field :question, :placeholder => "Write the question here" %></div>
 
 	<div><%= f.label :answer %>
-	<%= f.label :answer, :placeholder => "Write the answer here" %></div>
+	<%= f.text_field :answer, :placeholder => "write the answer here" %></div>
 
 	<div><%= f.submit "Insert" %></div> 
 

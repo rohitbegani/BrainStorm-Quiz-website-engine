@@ -1,83 +1,52 @@
 class LevelsController < ApplicationController
-  # GET /levels
-  # GET /levels.json
-  def index
-    @levels = Level.all
+	before_filter :admin_user, :only => [:create, :edit, :update, :destroy]
+	before_filter :registered_user, :only => [:show]
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @levels }
-    end
-  end
+	def show
+		@level = Level.find(params[:id])
+		redirect_to @level, :notice => "Being clever, are we?" if params[:redirect_to_current_location]
+	end
 
-  # GET /levels/1
-  # GET /levels/1.json
-  def show
-    @level = Level.find(params[:id])
+	def create
+		@level = Level.set(params[:level])
+		@level_last = Level.last
+		if @level.save
+			@level_last.update_attributes(:next_id => Level.last.id) if @level_last
+			flash[:success] = "Level successfully created"
+			redirect_to @level
+		else
+			render 'main_pages/admin'
+		end 
+	end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @level }
-    end
-  end
+#	def update
+#		@level= Level.find(params[:id])
+#		if @level.update_attributes(params[:level])
+#			flash[:success] = "Change successful"
+#			redirect_to @level
+#		else
+#			render 'main_pages/admin'
+#	end
 
-  # GET /levels/new
-  # GET /levels/new.json
-  def new
-    @level = Level.new
+	def update
+		
+	end
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @level }
-    end
-  end
+	def destroy
+		
+	end
 
-  # GET /levels/1/edit
-  def edit
-    @level = Level.find(params[:id])
-  end
+	private
 
-  # POST /levels
-  # POST /levels.json
-  def create
-    @level = Level.new(params[:level])
+	def admin_user
+  		redirect_to home_path, :notice => "Yeah right, because it's that easy" unless current_user.try(:admin?)
+	end
 
-    respond_to do |format|
-      if @level.save
-        format.html { redirect_to @level, notice: 'Level was successfully created.' }
-        format.json { render json: @level, status: :created, location: @level }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @level.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /levels/1
-  # PUT /levels/1.json
-  def update
-    @level = Level.find(params[:id])
-
-    respond_to do |format|
-      if @level.update_attributes(params[:level])
-        format.html { redirect_to @level, notice: 'Level was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @level.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /levels/1
-  # DELETE /levels/1.json
-  def destroy
-    @level = Level.find(params[:id])
-    @level.destroy
-
-    respond_to do |format|
-      format.html { redirect_to levels_url }
-      format.json { head :no_content }
-    end
-  end
+	def registered_user
+		redirect_to home_path, :notice => "Register to play or SignIn" unless current_user.try(:admin?)
+		if current_user and not current_user.admin
+			params[:redirect_to_current_location] = true  if params[:id].to_i != current_user.score
+			params[:id] = current_user.score
+		end
+	end
 end
