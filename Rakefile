@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-BrainStorm2014::Application.load_tasks
+BrainStorm::Application.load_tasks
