@@ -1,6 +1,6 @@
 BrainStorm::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-    GA.tracker = "UA-48551949-1"
+    GA.tracker = "UA-########-##"
   # Code is not reloaded between requests
   config.cache_classes = true
 
