@@ -1,2 +1,33 @@
-<h1>Level <%= @level.id %></h1>
-<h2><%= @level.question %></h2>
+
+
+<div align = "center">
+<h1><%= "LEVEL #{@level.id}" %></h1>
+
+ <div class ="img-responsive"> <%= image_tag @level.image_url.to_s, :class => "img-responsive" %><br/></div>
+
+<h2><%= @level.question %> </h2> </br>
+
+
+
+	<% unless current_user.admin? %>
+		<%= form_for @attempt do |f| %>
+
+		   <%= f.text_field :attempt, :placeholder => "Your answer goes here"%>
+
+  			<%=f.submit "Answer" %>
+
+
+		<% end %><br/>
+ <% end %>
+		<% if @attempt and @attempts.any? %>
+		 <%= "#{pluralize(@attempts.count, "attempt")} so far:" %><br/>
+		 <% end %>
+ </div>
+        <div class = "attempts col-xs-12 col-lg-4 col-md-4 col-md-offset-4 col-lg-offset-4"
+		 <ul>
+		 		<% @attempts.count.times do |n|%>
+		 		<li> <%= @attempts[n].attempt %> </li> 
+		 		 <% end %>
+		 	</ul>
+		 </div>
+	 	

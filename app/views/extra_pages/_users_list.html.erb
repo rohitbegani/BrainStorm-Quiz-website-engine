@@ -1,0 +1,25 @@
+<div class="table-responsive">
+<table class="table table-condensed table-hover table-bordered">
+<tr class="warning">
+<th class="bl"> Position </th>
+<th class="bl"> Username </th>
+<th class="bl"> College  </th>
+<th class="bl"> Score    </th>
+</tr>
+
+<% @users.each_with_index do |user, index| %>
+  <tr>
+       <% if @page %>
+      <td><%= (50 * @page.to_i) + index + 1 %></td>
+       <% else %>
+    <td> <%= index + 1 %> </td>
+     <% end %>  
+        <td> <%= user.user_name %> </td>
+        <td> <%= user.college %> </td>
+        <td> <%= user.score - 1 %> </td>
+        
+       <% end %>
+   </tr>
+       </table> 
+</div>
+    <%= will_paginate @users %>
