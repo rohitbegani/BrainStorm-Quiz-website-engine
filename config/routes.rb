@@ -1,14 +1,19 @@
-BrainStorm2014::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "signup"}
-  resources :levels
-  
-
-  root :to => "home_page#index"
-  match '/home', :to => 'main_pages#home', :as => 'home'
-  match '/admin', :to => 'main_pages#admin', :as => 'admin'
+BrainStorm::Application.routes.draw do
 
 
+   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+   resources :levels,   :only => [:create, :show, :update, :destroy]
+   resources :attempts, :only => [:create]
+   
+   root :to => "home_page#index"
+   match '/home',           :to => 'home_page#index',         :as => 'home' 
+   match '/admin',          :to => 'extra_pages#admin',       :as => 'admin' 
+   match '/play',           :to => 'levels#play',             :as => 'play'
+   match '/leaderboard',    :to => 'extra_pages#leaderboard', :as => 'leaderboard'
+   match 'levels/:id/edit', :to => 'extra_pages#edit_level',  :as => 'edit_level'
+   match '/rules',          :to => 'extra_pages#rules',       :as => 'rules'
+   match 'team',            :to => 'extra_pages#team',       :as => 'team'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
