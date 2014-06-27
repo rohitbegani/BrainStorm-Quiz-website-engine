@@ -1,0 +1,23 @@
+<h2> ADD LEVEL </h2>
+
+	<% #(@level.new_record?) ? "Add Level #{@current_level + 1}" : "Editing Level #{@level.id}" %>
+
+<%= form_for @level, :html => { :multipart => true } do |f| %>
+
+  <%= f.label :question %>
+  <%= f.text_field :question %>
+  <br/> <br/>
+
+  <%= f.label :answer %>
+  <%= f.text_field :answer%>
+  <br/> <br>
+
+  <%= f.file_field :image %> <br/>
+
+<% if @level.new_record? %>
+  <%= f.submit "Create" %>
+<% else %>
+  <%= f.submit "Edit" %>
+<% end %>
+
+<% end %>

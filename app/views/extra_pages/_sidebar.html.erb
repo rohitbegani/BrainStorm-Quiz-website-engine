@@ -1,0 +1,6 @@
+<ul>
+<% Level.order('id').each do |level| %>
+  <li> <%= link_to "Level #{level.id}", edit_level_path(level) %></li>
+
+<% end %>
+</ul>

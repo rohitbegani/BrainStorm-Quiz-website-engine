@@ -1,8 +1,15 @@
-class Level < ActiveRecord::Base
-  attr_accessible :answer, :next_id, :prev_id, :question
-  #before_answer :sterlize_answer
 
-  validates :answer, :presence => true, :length => { :maximum => 70 }
+class Level < ActiveRecord::Base
+  attr_accessible :answer, :next_id, :prev_id, :question, :image
+  before_save :sterlize_answer
+  mount_uploader :image, ImageUploader
+
+  has_many :attempts
+
+  validates :answer , :presence => true, :length => {:maximum => 50}
+
+ 
+
 
   def self.set(params)
     next_id = nil
@@ -11,12 +18,8 @@ class Level < ActiveRecord::Base
     level = Level.new(params)
     level
   end
-  
-
-  private
 
   def sterlize_answer
-  	self.answer = self.answer.chomp.downcase.gsub(/[\W\s]/, '')
+    self.answer = self.answer.chomp.downcase.gsub(/[\W\n\s]/,'')
   end
-
 end

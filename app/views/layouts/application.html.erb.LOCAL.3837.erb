@@ -10,7 +10,6 @@
   <%= stylesheet_link_tag    "bootstrap-theme", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= analytics_init if Rails.env.production? %>
 </head>
 <body class="container-fluid">
     <nav class="navbar navbar-default" role="navigation">
@@ -27,9 +26,8 @@
      </div>
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
        <ul class="nav navbar-nav navbar-right">
-
            <li><%= link_to "Rules", rules_path %></li>
-           <li><%= link_to "Forum", "https://apps.facebook.com/forumforpages/page/769175719761186", :target => :blank %></li>
+           <li><%= link_to "Forum", root_path %></li>
           
       <% if current_user.try(:admin?) %>
          <li><%= link_to "Make Game", admin_path %></li>
@@ -38,7 +36,6 @@
 
       <% if user_signed_in? %>
           <li><%= link_to "Play Game", play_path%></li>
-      
           <li><%= link_to "Logout", destroy_user_session_path, :method => :delete  %></li>
       <% else %> 
           <li><%= link_to "Sign In", user_session_path %></li>
@@ -66,10 +63,8 @@
 <%= yield %>
 
     <div class="col-md-12 col-xs-12 col-lg-12">
-      <footer>
-      Our Sponsor: <%= link_to image_tag("obtuseorange.png"), "http://www.facebook.com/obtuseorange", :class=>"image-responsive",:target => :blank %>
-      <%= link_to "Our Team", team_path,:class=>"team float-right" %>
-    </footer>
+      <hr>
+      <p>Our Sponsor: <%= link_to image_tag("obtuseorange.png"), "http://www.facebook.com/obtuseorange", :class=>"image-responsive" %></p>
     </div>
 
 </div>

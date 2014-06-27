@@ -1,18 +1,18 @@
 namespace :game do
   desc "Setup the game for first run"
   task :setup => :environment do
-    puts "Setting first user as admin..."
+    puts "Setting first user as admin..0%...50%...100% Completed"
     unless User.all.empty?
       User.first.toggle!(:admin)
      
-      puts "Setting up the game plug ..."
+      puts "Initializing..."
       if Game.all.empty?
         Game.create!
       end
-      puts "Run rake game:start to switch it on!"
+      puts "Run rake game:launch to switch it on!"
     else
-      puts "Please run 'rake db:create' and 'rake db:migrate' first if you haven't"
-      puts "Also, no user is currently present. You sir, should create the first user now!"
+      puts "Please run 'rake db:create' and 'rake db:migrate' first"
+      puts "Also, no user is currently present. How do you expect me to set the first user admin? -.-"
     end
   end
 end
