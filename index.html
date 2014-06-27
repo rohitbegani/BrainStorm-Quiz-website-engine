@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Brainstorm-quiz-website-engine by rohitbegani</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Brainstorm-quiz-website-engine</h1>
+        <h2>It is a treasure hunt/quiz event engine, use it to launch your own online quiz/treasure hunt events</h2>
+        <a href="https://github.com/rohitbegani/BrainStorm-Quiz-website-engine" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="brainstorm-quiz-website-engine" class="anchor" href="#brainstorm-quiz-website-engine"><span class="octicon octicon-link"></span></a>BrainStorm-Quiz-Website-Engine</h1>
+
+<p>BrainStorm is a quiz/treasure hunt website engine. It is based on Ruby on Rails and maybe used by anyone to host their own online quiz/treasure hunt event.
+The first instance of this Quiz-Website-Engine was used in May 2014 and maybe seen at bstorm2014.com
+It is currently undergoing rigorous testing and all the test cases will be uploaded on Github soon.</p>
+
+<h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to Use</h2>
+
+<p>*Fork the project and clone it
+*Run <code>bundle Install</code>
+*Then run these commands</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span> <span class="p">\\</span><span class="n">migrate</span> <span class="n">the</span> <span class="n">databases</span>
+<span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">create</span>  <span class="p">\\</span><span class="no">Create</span> <span class="n">environment</span>
+</pre></div>
+
+<h2>
+<a name="setting-up-and-running-the-game" class="anchor" href="#setting-up-and-running-the-game"><span class="octicon octicon-link"></span></a>Setting up and Running the game</h2>
+
+<h2>
+<a name="initialize-the-game" class="anchor" href="#initialize-the-game"><span class="octicon octicon-link"></span></a>Initialize the game</h2>
+
+<div class="highlight highlight-ruby"><pre><span class="n">rake</span> <span class="ss">game</span><span class="p">:</span><span class="kp">initialize</span>
+</pre></div>
+
+<h2>
+<a name="launch-the-game" class="anchor" href="#launch-the-game"><span class="octicon octicon-link"></span></a>Launch the game</h2>
+
+<div class="highlight highlight-ruby"><pre><span class="n">rake</span> <span class="ss">game</span><span class="p">:</span><span class="n">launch</span>
+</pre></div>
+
+<h2>
+<a name="stop-the-game" class="anchor" href="#stop-the-game"><span class="octicon octicon-link"></span></a>Stop the game</h2>
+
+<div class="highlight highlight-ruby"><pre><span class="n">rake</span> <span class="ss">game</span><span class="p">:</span><span class="n">kill</span>
+</pre></div>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<p>*Seperate admin panel for adding/editing/removing questions
+*Connectivity with google analytics
+*A fully connected leaderboard
+*Optimized for hosting on Heroku
+*Powerful regex for answer checking i.e. spaces, case, indentation and punctuation don't matter. For example; if the answer is Ruby Ninja, then rubyninja, RubyNinja, ruby ninja and even Ruby Ninja! all are correct answers.</p>
+
+<h2>
+<a name="google-analytics" class="anchor" href="#google-analytics"><span class="octicon octicon-link"></span></a>Google Analytics</h2>
+
+<p>Google Analytics has been connected using the google-analytics-rails gem by bgarret.</p>
+
+<p>To use google analytics go to:</p>
+
+<p><code>config\environments\production.rb</code></p>
+
+<p>After that replace # with your tracker code</p>
+
+<p>`GA.tracker = "UA-########-##"</p>
+
+<p>That's it!</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/rohitbegani/BrainStorm-Quiz-website-engine/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/rohitbegani/BrainStorm-Quiz-website-engine/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/rohitbegani/BrainStorm-Quiz-website-engine"></a> is maintained by <a href="https://github.com/rohitbegani">rohitbegani</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
