@@ -57,3 +57,7 @@ After that replace # with your tracker code
 `GA.tracker = "UA-########-##"
 
 That's it!
+
+Disclaimer
+----------
+This projected is licensed under the terms of the MIT license. Happy Coding!
