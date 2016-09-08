@@ -3,7 +3,7 @@ BrainStorm-Quiz-Website-Engine
 BrainStorm is a quiz/treasure hunt website engine. It is based on Ruby on Rails and maybe used by anyone to host their own online quiz/treasure hunt event.
 The first instance of this Quiz-Website-Engine was used in May 2014 ~~and maybe seen at bstorm2014.com~~ ( domain expired). The website got 70,000+ page views from over 50 countries in just 5 days.
 
-A partial demo of the same may be viewed [here](shielded-reef-9288.herokuapp.com/).
+<!--A partial demo of the same may be viewed [here](shielded-reef-9288.herokuapp.com/).-->
 
 How to Use
 ----------
